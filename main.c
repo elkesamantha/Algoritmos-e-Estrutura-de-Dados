@@ -1,32 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "MergeSort.h"
-#include "quicksort.h"
+#include"arvore_binaria.h"
 
 
 int main(){
 
-int *v;
+    NoArvore *raiz = NULL;
+    int opcao, valor;
 
-v = calloc(20,sizeof(int));
+    do{
+        printf("\n\t0 - Sair\n\t1 - Inserir\n\t2 - Imprimir\n");
+        scanf("%d", &opcao);
 
-  for (int i = 0; i < 20; i++)
-  {
-    /* gerando valores aleatórios entre zero e 50*/
-    v[i] = rand() % 50;
-    printf("%d ", v[i]);
-  }
-
-printf("%d\n");
-
-quicksort(v,0,19);
-
-int i;
-
-for (i=0; i < 20; i++){
-    printf("%d ",v[i]);
-}
-
+        switch(opcao){
+        case 1:
+            printf("\n\tDigite um valor: ");
+            scanf("%d", &valor);
+            inserir(&raiz, valor);
+            break;
+        case 2:
+            printf("\n\tImpressao da arvore:\n\t");
+            imprimir(raiz);
+            printf("\n");
+            break;
+        default:
+            if(opcao != 0)
+                printf("\n\tOpcao invalida!!!\n");
+        }
+    }while(opcao != 0);
 
     return 0;
 }
